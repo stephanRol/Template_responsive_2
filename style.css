@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
+:root{
+    --overlay-color: #03a9f4;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+.showcase{
+    position: absolute;
+    right: 0;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #111;  /*COLOR NEGRO CLARO*/
+    color: #fff;
+    z-index: 2;
+    transition: 0.5s; /*efecto de entrada de las letras*/
+}
+
+.showcase.active{       
+    /* right:300px; Dato del proyecto original*/
+}
+
+.showcase header{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    padding: 40px 100px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.logo{
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.toggle{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background: url('media/menu.png'); /*Por defecto la imagen se repite*/
+    background-repeat: no-repeat;  /*Para que la imagen no se repita*/ 
+    background-size: 30px;
+    background-position: center;
+    cursor: pointer;  /*cambia el curso de flecha a dedo*/
+}
+
+.toggle.active{
+    position: relative;
+    right: 260px;
+    background: url('media/close.png'); 
+    background-repeat: no-repeat;  
+    background-size: 25px;
+    background-position: center;
+}
+
+.showcase video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /*Para que el video cubra toda la pantalla*/
+    opacity: 0.8;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /*background-color: #03a9f4;*/
+    background-color: var(--overlay-color);
+    mix-blend-mode: overlay;
+}
+
+.text{
+    position: relative;
+    z-index: 10;
+}
+
+
+.text h2{
+    font-size: 5em; /*em = whatever de parent container font-size is, multiplied by 5*/
+    font-weight: 800;
+    line-height: 1em;
+    text-transform: uppercase;
+}
+
+.text h3{
+    font-size: 4em; /*em = whatever de parent container font-size is, multiplied by 5*/
+    font-weight: 700;
+    line-height: 1em;
+    text-transform: uppercase;
+}
+
+.text p {
+    font-size: 1.1em;
+    margin: 20px 0;
+    font-weight: 400;
+    max-width: 700px;
+}
+
+.text a {
+    display: inline-block; /*No se porqué*/
+    font-size: 1em;
+    background: #fff;
+    padding: 10px 30px;
+    text-decoration: none;
+    color: #111;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;  /*espacio entre letras*/
+    transition: 0.2s;
+}
+
+.text a:hover {
+    letter-spacing: 6px;
+}
+
+.social{
+    position: absolute;
+    bottom: 20px;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social li{
+    list-style: none; /*para sacar los puntos de la lista li*/
+}
+
+.social li a{
+    display: inline-block;
+    filter: invert(1);
+    margin: 30px;
+    transform: scale(0.7); /*hace los iconos mas pequeños. El valor por defecto es 1.*/
+    transition: 1.5s;
+}
+
+.social li a:hover{
+    transform: scale(1) translateY(-15px);  /*mantener la scale. translateY: positivo, hacia abajo, negativo, hacia arriba*/
+    transition: 0.5s;
+}
+.menu{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+.menu.active{
+    z-index: 20;
+    background-color: #fff;
+    transition: 0.5s;  
+}
+
+.menu ul{
+    position: relative;
+    list-style: none;
+}
+
+.menu ul li a{
+    text-decoration: none;
+    font-size: 24px;
+    color: #111;
+}
+
+.menu ul li a:hover{
+    color: var(--overlay-color);
+}
+
+/*MEDIA QUERY*/
+
+@media(max-width: 798px){
+    .showcase, 
+    .showcase header{
+        padding: 40px;
+    }
+
+    .text h2{
+        font-size: 3em;
+    }
+    .text h3{
+        font-size: 2em;
+    }
+}
